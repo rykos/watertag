@@ -4,13 +4,18 @@
 </head>
 <body>
 <al>
-    <li><a href="index">Back</a></li>
-
+    <a href="index">Back</a>
       <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="myfile">
-    <button type="submit">Upload</button>
+        {% csrf_token %}
+          <li><input type="file" name="myfile"> Image</li>
+          <li><input type="file" name="myfile"> Watertag</li>
+          <li><textarea> </textarea> Coordinates X</li>
+          <li><textarea> </textarea> Coordinates Y</li>
+        <button type="submit">Upload</button>
      </form>
+    {% if uploaded_file_url %}
+    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+    {% endif %}
 </al>
 </body>
 </html>
