@@ -15,11 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls.static import  static
+from django.conf import settings
 from  water import  views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
-    url(r'^index$', views.index, name='index'),
     url(r'^upload$', views.upload_file, name='upload'),
+    url(r'^image_view$', views.view_image, name='image_view'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
